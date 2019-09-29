@@ -91,7 +91,8 @@ func _update_space_position(position):
 func _on_DEATH_TIMER_timeout():
 	set_physics_process(false)
 	get_node("HUD/Warning").stop()
-	get_node("HUD/WARNING").set_text("You got lost in space forever. \n \n Everyone you love is dead. \n \n GAME OVER")
+	get_node("HUD/WARNING").set_text("You got lost in space forever. \n \nEveryone you love is dead. \n \nGAME OVER")
+	get_node("finish").start()
 func _reset_death():
 	OUT_OF_BOUNDS = false
 	get_node("DEATH_TIMER").stop()
@@ -107,3 +108,14 @@ func _die():
 	if SHIELD < 21:
 		get_node("HUD/Shield/shield").modulate = Color(0.87,0.14,0.14)
 	get_node("HUD/Shield/shield").set_text(var2str(int(SHIELD))+"%")
+	if SHIELD <0:
+		set_physics_process(false)
+		get_node("Figura").hide()
+		get_node("HUD/WARNING").show()
+		get_node("HUD/WARNING").set_text("Your ship exploded. \n \nEveryone you love is dead. \n \nGAME OVER")
+		get_node("finish").start()
+		
+
+
+func _on_finish_timeout():
+	CORE._game_over()

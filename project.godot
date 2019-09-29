@@ -15,8 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="OpenJamGame"
-config/icon="res://icon.png"
+config/name="Hope"
+run/main_scene="res://System/CORE.tscn"
+config/icon="res://Figuras/Icone.png"
 
 [debug]
 

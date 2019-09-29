@@ -159,4 +159,8 @@ anims/ON = SubResource( 8 )
 [node name="DEATH_TIMER" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="finish" type="Timer" parent="."]
+wait_time = 5.0
 [connection signal="timeout" from="DEATH_TIMER" to="." method="_on_DEATH_TIMER_timeout"]
+[connection signal="timeout" from="finish" to="." method="_on_finish_timeout"]

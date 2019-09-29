@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Test/Space.gd" type="Script" id=1]
 [ext_resource path="res://Ship/Hero.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Location/Scripts/Back_to_ship.gd" type="Script" id=4]
 [ext_resource path="res://Figuras/Sprites.png" type="Texture" id=5]
 [ext_resource path="res://Ship/Item.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Fonts/geompixel.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.30702, 8 )
@@ -25,6 +26,10 @@ angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 color_ramp = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 5
+font_data = ExtResource( 7 )
 
 [node name="Start" type="Node2D"]
 script = ExtResource( 1 )
@@ -91,7 +96,16 @@ hframes = 20
 frame = 102
 
 [node name="Item" parent="." instance=ExtResource( 6 )]
-position = Vector2( 101, -8 )
+position = Vector2( 62.176, -100.854 )
 ITEM_TYPE = 1
+
+[node name="Label" type="Label" parent="."]
+margin_left = -90.9118
+margin_top = -104.735
+margin_right = 120.088
+margin_bottom = -26.7354
+custom_fonts/font = SubResource( 5 )
+text = "You should go out there and find some   to keep your family alive. There are 4 planets out there, one has the provisions we need. The other tree (all with the same layout (no time for level design, sorry :( )) just have fuel. Use arrow keys to move and space bar to jump as a human. As a ship, use arrow keys to change direction, up to thrust forward, down to thrust backwards and space to shoot."
+autowrap = true
 [connection signal="body_entered" from="Back_to_ship" to="Back_to_ship" method="_on_Back_to_ship_body_entered"]
 [connection signal="timeout" from="Back_to_ship/Timer" to="Back_to_ship" method="_on_Timer_timeout"]
